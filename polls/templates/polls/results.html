@@ -1,0 +1,11 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/blog.css' %}">
+<h1>{{ question.question_text }}</h1>
+
+<ul>
+{% for choice in question.choice_set.all %}
+    <h2><li>{{ choice.choice_text }} -- {{ choice.votes }} vote{{ choice.votes|pluralize }}</li></h2>
+{% endfor %}
+</ul>
+
+<h1> <a href="{% url 'polls:detail' question.id %}">Vote again?</a> </h1>
